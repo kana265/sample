@@ -40,14 +40,20 @@ class Main{
 
            score[i-1] = 1/(dist[i-1] + 1);
            System.out.println(" score is " + score[i-1] + " ");
+
+           for (int i = 1; i < countUsers; i++) {
+            for (int j = 1; j < countUsers - i; j++) {
+                if (score[i] < score[j + 1]) {
+                    double temp = score[j];
+                    score[j] = score[j + 1];
+                    score[j + 1] = temp;
+                }
+            }
+        }
+    }
            
 
-        }
-
-        Arrays.sort(score);
-        for(int i=0; i<countUsers-1; i++){
-            System.out.println( i + " " + score[i] + " ");
-        }
+        
 
         scanner.close();
     }
